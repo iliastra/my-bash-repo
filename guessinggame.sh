@@ -1,18 +1,21 @@
+#!/usr/bin/env bash
+# File: guessinggame.sh
 
 
 clear
 echo "Hello, "${USER}
-date;
 echo "Wellcome to the guessing game"
-echo "Enter your number: "
+echo "--The date is " 
+date;
+echo "----Please, enter your number:----"
 read guestGuess
 
-function get_file {
+function get_number {
 	local count=$(ls -l | wc -l)-1
 	echo $count
 }
 
-rightNumber=$(get_file)
+rightNumber=$(get_number)
 
 while [[ guestGuess -ne $rightNumber ]]
 do
@@ -20,11 +23,11 @@ do
 	then
 		echo "Pardon, your number was too high..."
 	else 
-		echo "Sorry, your number was too low..."
+		echo "Pardon, your number was too low..."
 	fi
 	echo
 	echo "Please, try it again :)"
 	read guestGuess
 done
 
-echo "Prima! You are right my guest!"
+echo "Prima! That is the right number!"
